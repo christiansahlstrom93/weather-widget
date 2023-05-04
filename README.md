@@ -4,13 +4,17 @@ A React library that will provide you with a widget that shows weather for the f
 
 Full [documentation](https://algobook.info/docs/reactjs-weather).
 
+### Other free projects and APIs
+
+For more cool and free open source projects and APIs, check out our [website](https://algobook.info/opensource)
+
 ## Example widget of weather in Copenhagen
 
 ![image](https://storage.googleapis.com/algobook/weather-widget/Screenshot%202023-04-10%20at%2011.38.19.png)
 
 ## Change color of the widget
 
-If needed, the color and icons can now be changed with optional props. 
+If needed, the color and icons can now be changed with optional props.
 
 ![Color](https://storage.googleapis.com/algobook/weather-widget/Screenshot%202023-04-24%20at%2020.47.10.png)
 
