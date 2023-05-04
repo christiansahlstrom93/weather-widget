@@ -1,0 +1,115 @@
+.widget {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0rem 0.25rem 1rem RGB(0 0 0 / 10%);
+  background-color: white;
+  width: 250px;
+  min-height: 200px;
+  border-radius: 8px;
+  color: #5f6368;
+}
+
+.todayWrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  border-bottom: 1px solid #dfdfdf;
+  padding: 0.5rem 1rem;
+}
+
+.todayContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.arrowIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.arrowIconSlim {
+  width: 13px;
+  height: 13px;
+  margin-left: .25rem;
+}
+
+.smallRow {
+  display: flex;
+  align-items: center;
+}
+
+.topRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.weatherSymbolSmall {
+  margin-top: .25rem;
+  width: 32px;
+  height: 32px;
+}
+
+.infoRow {
+  display: flex;
+  flex-direction: row;
+  font-size: 12px;
+  padding: .5rem .25rem;
+  gap: .5rem
+}
+
+.infoRowSlim {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 11px;
+  gap: .25rem;
+  margin-top: .5rem;
+}
+
+.minTempSlim {
+  margin-left: 2px;
+}
+
+.upcomingWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex: 0;
+  gap: .25rem;
+  padding: 0.5rem 0;
+}
+
+.dayCell {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+ 
+  
+  flex-direction: column;
+  padding: .25rem;
+  min-height: 64px;
+}
+
+.smallIconWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.dayCell:not(:first-of-type) {
+  border-left: 1px solid #dfdfdf;
+}
+
+.dayTextSmall {
+  font-size: 10px;
+  font-weight: 650;
+  margin-bottom: 4px;
+  margin-left: 2px;
+}
+
+.cityName {
+  font-size: 12px;
+  font-weight: 600;
+}
