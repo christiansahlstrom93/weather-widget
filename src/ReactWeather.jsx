@@ -138,7 +138,7 @@ export const ReactWeather = (props) => {
     fetchWeather();
   }, [coordinates.latitude, coordinates.longitude, useCelsius, apiKey, city]);
 
-  if (!coordinates.latitude || !coordinates.longitude) {
+  if (!city && (!coordinates.latitude || !coordinates.longitude)) {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         setCoordinates({
