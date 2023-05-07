@@ -8,6 +8,10 @@ Full [documentation](https://algobook.info/docs/reactjs-weather).
 
 For more cool and free open source projects and APIs, check out our [website](https://algobook.info/opensource)
 
+## Update of API
+
+We do now support weather for the whole world. Just provide the city name, and we will provide weather for the city (if found).
+
 ## Example widget of weather in Copenhagen
 
 ![image](https://storage.googleapis.com/algobook/weather-widget/Screenshot%202023-04-10%20at%2011.38.19.png)

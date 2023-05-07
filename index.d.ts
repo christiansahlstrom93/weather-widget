@@ -2,6 +2,7 @@ declare module "reactjs-weather" {
   interface IReactWeatherProps {
     lon?: number;
     lat?: number;
+    city?: string;
     useCelsius?: boolean;
     apiKey?: string;
     backgroundColor?: string;

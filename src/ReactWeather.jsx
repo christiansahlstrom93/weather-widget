@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getWeatherData } from "./service";
+import { getWeatherData, getWeatherDataFromCity } from "./service";
 import sun from "./icons/sunny.svg";
 import partiallyClouds from "./icons/littleSun.svg";
 import cloudy from "./icons/cloudy.svg";
@@ -111,6 +111,7 @@ export const ReactWeather = (props) => {
     iconTheme = "DARK",
     backgroundColor,
     color,
+    city,
   } = props;
   const [coordinates, setCoordinates] = useState({
     latitude: lat,
@@ -121,7 +122,10 @@ export const ReactWeather = (props) => {
 
   useEffect(() => {
     async function fetchWeather() {
-      if (coordinates.latitude && coordinates.longitude) {
+      if (city) {
+        const data = await getWeatherDataFromCity(city, useCelsius);
+        setWeatherData(data);
+      } else if (coordinates.latitude && coordinates.longitude) {
         const data = await getWeatherData(
           coordinates.latitude,
           coordinates.longitude,
@@ -132,7 +136,7 @@ export const ReactWeather = (props) => {
       }
     }
     fetchWeather();
-  }, [coordinates.latitude, coordinates.longitude, useCelsius, apiKey]);
+  }, [coordinates.latitude, coordinates.longitude, useCelsius, apiKey, city]);
 
   if (!coordinates.latitude || !coordinates.longitude) {
     if (navigator.geolocation) {
@@ -179,7 +183,7 @@ export const ReactWeather = (props) => {
                 <img
                   style={{ transform: `rotate(${day.windDirection}deg)` }}
                   className="arrowIconSlim"
-                  src={iconTheme === 'LIGHT' ? arrow_bright : arrow}
+                  src={iconTheme === "LIGHT" ? arrow_bright : arrow}
                   alt="wind direction"
                 />
               </div>
@@ -219,7 +223,7 @@ export const ReactWeather = (props) => {
             <img
               style={{ transform: `rotate(${data.windDirection}deg)` }}
               className="arrowIcon"
-              src={iconTheme === 'LIGHT' ? arrow_bright : arrow}
+              src={iconTheme === "LIGHT" ? arrow_bright : arrow}
               alt="wind direction"
             />
           </div>
