@@ -1,6 +1,6 @@
 {
   "name": "reactjs-weather",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "A widget that shows weather for given location in a widget.",
   "main": "./dist/index.js",
   "types": "index.d.ts",
