@@ -20,7 +20,7 @@ We do now support weather for the whole world. Just provide the city name, and w
 
 If needed, the color and icons can now be changed with optional props.
 
-![Color](https://storage.googleapis.com/algobook/weather-widget/Screenshot%202023-04-24%20at%2020.47.10.png)
+![c](https://storage.googleapis.com/algobook/weather-widget/Screenshot%202023-05-08%20at%2013.10.47.png)
 
 ## Some notes
 
