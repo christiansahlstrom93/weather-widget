@@ -1,6 +1,6 @@
 # Weather widget in React
 
-A React library that will provide you with a widget that shows weather for the four next days. We are using data from SMHI (The Swedish Meteorological and Hydrological Institute).
+A React library that will provide you with a widget that shows weather for the four next days.
 
 Full [documentation](https://algobook.info/docs/reactjs-weather).
 
