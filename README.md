@@ -4,6 +4,10 @@ A React library that will provide you with a widget that shows weather for the f
 
 Full [documentation](https://algobook.info/docs/reactjs-weather).
 
+## Free Weather API
+
+If you want to build your own solution, we have a free API for anyone to use. Documentation can be found [here](https://algobook.info/docs/weather-api)
+
 ### Other free projects and APIs
 
 For more cool and free open source projects and APIs, check out our [website](https://algobook.info/opensource)
