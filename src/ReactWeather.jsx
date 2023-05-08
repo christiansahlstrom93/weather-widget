@@ -106,11 +106,11 @@ export const ReactWeather = (props) => {
   const {
     lat,
     lon,
-    useCelsius = true,
+    unit = "metric",
     apiKey,
     iconTheme = "DARK",
-    backgroundColor,
-    color,
+    borderColor = "#dfdfdf",
+    widgetStyle = {},
     city,
   } = props;
   const [coordinates, setCoordinates] = useState({
@@ -123,20 +123,20 @@ export const ReactWeather = (props) => {
   useEffect(() => {
     async function fetchWeather() {
       if (city) {
-        const data = await getWeatherDataFromCity(city, useCelsius);
+        const data = await getWeatherDataFromCity(city, unit);
         setWeatherData(data);
       } else if (coordinates.latitude && coordinates.longitude) {
         const data = await getWeatherData(
           coordinates.latitude,
           coordinates.longitude,
-          useCelsius,
+          unit === "metric",
           apiKey
         );
         setWeatherData(data);
       }
     }
     fetchWeather();
-  }, [coordinates.latitude, coordinates.longitude, useCelsius, apiKey, city]);
+  }, [coordinates.latitude, coordinates.longitude, unit, apiKey, city]);
 
   if (!city && (!coordinates.latitude || !coordinates.longitude)) {
     if (navigator.geolocation) {
@@ -159,8 +159,12 @@ export const ReactWeather = (props) => {
   const renderUpcomingDays = (data) => {
     return (
       <div className="upcomingWrapper">
-        {data.map((day) => (
-          <div key={day.formattedDay} className="dayCell">
+        {data.map((day, i) => (
+          <div
+            key={day.formattedDay}
+            className="dayCell"
+            style={{ borderLeft: i > 0 ? `1px solid ${borderColor}` : "" }}
+          >
             <span className="dayTextSmall">{day.formattedDay}</span>
             <div className="smallIconWrapper">
               <img
@@ -179,7 +183,9 @@ export const ReactWeather = (props) => {
                 <span className="minTempSlim">{`L:${day.minTemp}°`}</span>
               </div>
               <div className="smallRow">
-                <span>{`${day.windAverage} m/s`}</span>
+                <span>{`${day.windAverage} ${
+                  unit === "metric" ? "m/s" : "mp/h"
+                }`}</span>
                 <img
                   style={{ transform: `rotate(${day.windDirection}deg)` }}
                   className="arrowIconSlim"
@@ -198,7 +204,10 @@ export const ReactWeather = (props) => {
     const now = new Date().getHours();
     const isNigth = now >= 20 || now < 4;
     return (
-      <div className="todayWrapper">
+      <div
+        className="todayWrapper"
+        style={{ borderBottom: `1px solid ${borderColor}` }}
+      >
         <div className="topRow">
           <span className="cityName">{weatherData.city}</span>
           <span className="cityName">{data.formattedDay}</span>
@@ -219,7 +228,9 @@ export const ReactWeather = (props) => {
           <div className="infoRow">
             <span>{`H:${data.maxTemp}°`}</span>
             <span>{`L:${data.minTemp}°`}</span>
-            <span>{`${data.windAverage} m/s`}</span>
+            <span>{`${data.windAverage} ${
+              unit === "metric" ? "m/s" : "mp/h"
+            }`}</span>
             <img
               style={{ transform: `rotate(${data.windDirection}deg)` }}
               className="arrowIcon"
@@ -233,7 +244,7 @@ export const ReactWeather = (props) => {
   };
 
   return (
-    <div className="widget" style={{ backgroundColor, color }}>
+    <div className="widget" style={widgetStyle}>
       {renderToday(weatherData.data[0])}
       {renderUpcomingDays(weatherData.data.slice(1, 4))}
     </div>

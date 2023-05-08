@@ -13,7 +13,6 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-  border-bottom: 1px solid #dfdfdf;
   padding: 0.5rem 1rem;
 }
 
@@ -96,10 +95,6 @@
 .smallIconWrapper {
   display: flex;
   justify-content: center;
-}
-
-.dayCell:not(:first-of-type) {
-  border-left: 1px solid #dfdfdf;
 }
 
 .dayTextSmall {

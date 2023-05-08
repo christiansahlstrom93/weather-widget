@@ -9,36 +9,20 @@ import {
   sortByTemp,
 } from "./helper";
 
-export const getWeatherDataFromCity = async (city, useCelsius) => {
-  const response = await fetch(
-    `https://www.smhi.se/wpt-a/backend_startpage_nextgen/geo/autocomplete/places/${city}`
+export const getWeatherDataFromCity = async (city, unit) => {
+  const respone = await fetch(
+    `https://weather.algobook.info/forecast?city=${city}`
   );
-  const suggestions = await response.json();
-  const id = suggestions[0]?.geonameid;
-  const cityName = suggestions[0]?.place;
-  const forecastResponse = await fetch(
-    `https://www.smhi.se/wpt-a/backend_startpage_nextgen/forecast/fetcher/${id}/10dFormat`
-  );
-  const forecast = await forecastResponse.json();
-  const mappedDays = forecast.daySerie.map((day) => day.data);
-  const flatted = mappedDays.flat();
-
-  const parsed = flatted.map((day) => {
-    const fullDate = new Date(day.validTime);
+  const weatherData = await respone.json();
+  const weatherDays = weatherData.forecast.map((day) => {
     return {
-      day: new Date(
-        fullDate.getFullYear(),
-        fullDate.getMonth(),
-        fullDate.getDate()
-      ),
-      temp: day.t,
-      symbol: day.Wsymb2,
-      windPerSecond: Number(day.ws),
-      windDirection: day.wd,
+      ...day,
+      minTemp: unit === "metric" ? day.minTempCelsius : day.minTempFarenheit,
+      maxTemp: unit === "metric" ? day.maxTempCelsius : day.maxTempFarenheit,
+      windAverage: unit === "metric" ? day.windAverageMs : day.windAverageMph,
     };
   });
-
-  const weatherDays = mapWeather(parsed, useCelsius);
+  const cityName = weatherData.city.name;
 
   return { city: cityName, data: weatherDays.splice(0, 4) };
 };
