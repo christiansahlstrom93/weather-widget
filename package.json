@@ -1,14 +1,16 @@
 {
   "name": "reactjs-weather",
   "version": "1.0.16",
-  "description": "A widget that shows weather for given location in a widget.",
+  "description": "A widget that shows weather for given location in a widget - without API keys needed",
   "main": "./dist/index.js",
   "types": "index.d.ts",
   "homepage": "https://algobook.info/",
   "keywords": [
     "weather",
     "react weather",
-    "weather widget"
+    "weather widget",
+    "free weather API",
+    "free weather"
   ],
   "scripts": {
     "build": "babel src/ -d dist --copy-files"

@@ -1,6 +1,6 @@
 # Weather widget in React
 
-A React library that will provide you with a widget that shows weather for the four next days.
+A React library that will provide you with a widget that shows weather for the four next days. No need for any API keys or sign ups.
 
 Full [documentation](https://algobook.info/docs/reactjs-weather).
 
@@ -28,6 +28,7 @@ If needed, the color and icons can now be changed with optional props.
 
 ## Some notes
 
+- With providing the widget with a city name, we will get the weather for the given city
 - You can provide the widget with your own latitude and longitude, but you don't have to. However, if no values are provided, the widget will fetch from the _navigator.geolocation_ API, which means that the user must have accepted the browser to know its location.
 - We support both Celsius and Farenheit units.
 - We now support changing the colors and icons for the widget
