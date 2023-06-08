@@ -196,7 +196,7 @@ export const ReactWeather = (props) => {
                 {renderImg(
                   iconTheme === "LIGHT" ? arrow_bright : arrow,
                   "wind-direction",
-                  "weatherSymbolSmall",
+                  "arrowIcon",
                   { transform: `rotate(${day.windDirection}deg)` }
                 )}
               </div>
