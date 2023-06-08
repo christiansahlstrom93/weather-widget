@@ -112,13 +112,22 @@ export const ReactWeather = (props) => {
     borderColor = "#dfdfdf",
     widgetStyle = {},
     city,
+    Image,
   } = props;
+
   const [coordinates, setCoordinates] = useState({
     latitude: lat,
     longitude: lon,
   });
 
   const [weatherData, setWeatherData] = useState(null);
+
+  const renderImg = (src, alt, className, style = {}) => {
+    if (imgComp) {
+      return <Image src={src} alt={alt} className={className} style={style} />;
+    }
+    return <img src={src} alt={alt} className={className} style={style} />;
+  };
 
   useEffect(() => {
     async function fetchWeather() {
@@ -167,15 +176,13 @@ export const ReactWeather = (props) => {
           >
             <span className="dayTextSmall">{day.formattedDay}</span>
             <div className="smallIconWrapper">
-              <img
-                className="weatherSymbolSmall"
-                src={
-                  iconTheme === "LIGHT"
-                    ? ICON_MAP_BRIGHT[day.symbol]
-                    : ICON_MAP[day.symbol]
-                }
-                alt="sun"
-              />
+              {renderImg(
+                iconTheme === "LIGHT"
+                  ? ICON_MAP_BRIGHT[day.symbol]
+                  : ICON_MAP[day.symbol],
+                "sun",
+                "weatherSymbolSmall"
+              )}
             </div>
             <div className="infoRowSlim">
               <div>
@@ -186,12 +193,12 @@ export const ReactWeather = (props) => {
                 <span>{`${day.windAverage} ${
                   unit === "metric" ? "m/s" : "mp/h"
                 }`}</span>
-                <img
-                  style={{ transform: `rotate(${day.windDirection}deg)` }}
-                  className="arrowIconSlim"
-                  src={iconTheme === "LIGHT" ? arrow_bright : arrow}
-                  alt="wind direction"
-                />
+                {renderImg(
+                  iconTheme === "LIGHT" ? arrow_bright : arrow,
+                  "wind-direction",
+                  "weatherSymbolSmall",
+                  { transform: `rotate(${day.windDirection}deg)` }
+                )}
               </div>
             </div>
           </div>
@@ -213,30 +220,28 @@ export const ReactWeather = (props) => {
           <span className="cityName">{data.formattedDay}</span>
         </div>
         <div className="todayContainer">
-          <img
-            src={
-              isNigth
-                ? iconTheme === "LIGHT"
-                  ? NIGHT_ICONS_BRIGHT[data.symbol]
-                  : NIGHT_ICONS[data.symbol]
-                : iconTheme === "LIGHT"
-                ? ICON_MAP_BRIGHT[data.symbol]
-                : ICON_MAP[data.symbol]
-            }
-            alt="sun"
-          />
+          {renderImg(
+            isNigth
+              ? iconTheme === "LIGHT"
+                ? NIGHT_ICONS_BRIGHT[data.symbol]
+                : NIGHT_ICONS[data.symbol]
+              : iconTheme === "LIGHT"
+              ? ICON_MAP_BRIGHT[data.symbol]
+              : ICON_MAP[data.symbol],
+            "sun"
+          )}
           <div className="infoRow">
             <span>{`H:${data.maxTemp}°`}</span>
             <span>{`L:${data.minTemp}°`}</span>
             <span>{`${data.windAverage} ${
               unit === "metric" ? "m/s" : "mp/h"
             }`}</span>
-            <img
-              style={{ transform: `rotate(${data.windDirection}deg)` }}
-              className="arrowIcon"
-              src={iconTheme === "LIGHT" ? arrow_bright : arrow}
-              alt="wind direction"
-            />
+            {renderImg(
+              iconTheme === "LIGHT" ? arrow_bright : arrow,
+              "wind-direction",
+              "arrowIcon",
+              { transform: `rotate(${data.windDirection}deg)` }
+            )}
           </div>
         </div>
       </div>

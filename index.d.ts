@@ -8,6 +8,7 @@ declare module "reactjs-weather" {
     borderColor?: string;
     apiKey?: string;
     iconTheme?: "DARK" | "LIGHT";
+    Image?: any;
   }
   const ReactWeather: (props: IReactWeatherProps) => JSX.Element;
 }
