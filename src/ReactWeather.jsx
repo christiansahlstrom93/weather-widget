@@ -123,7 +123,7 @@ export const ReactWeather = (props) => {
   const [weatherData, setWeatherData] = useState(null);
 
   const renderImg = (src, alt, className, style = {}) => {
-    if (imgComp) {
+    if (Image) {
       return <Image src={src} alt={alt} className={className} style={style} />;
     }
     return <img src={src} alt={alt} className={className} style={style} />;
